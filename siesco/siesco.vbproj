@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -197,10 +199,40 @@
     <Compile Include="App_Start\IdentityConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
+    <Compile Include="AspNetRoles.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaims.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogins.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUsers.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
+    <Compile Include="C__MigrationHistory.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloSiesco.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloSiesco.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloSiesco.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloSiesco.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.vb" />
     <Compile Include="Models\IdentityModels.vb" />
@@ -242,6 +274,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="ModeloSiesco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloSiesco.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ModeloSiesco.edmx.diagram">
+      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
+    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -252,6 +291,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="ModeloSiesco.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
+      <LastGenOutput>ModeloSiesco.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="ModeloSiesco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
+      <LastGenOutput>ModeloSiesco.vb</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -306,7 +355,9 @@
     <Content Include="Views\Shared\_Layout.vbhtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
