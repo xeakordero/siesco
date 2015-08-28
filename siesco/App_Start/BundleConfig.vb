@@ -18,10 +18,18 @@ Public Module BundleConfig
         bundles.Add(New ScriptBundle("~/bundles/bootstrap").Include(
                   "~/Scripts/bootstrap.js",
                   "~/Scripts/respond.js"))
+        bundles.Add(New ScriptBundle("~/bundles/calendar").Include(
+                  "~/Scripts/Calendar/fullcalendar.min.js"))
+        bundles.Add(New ScriptBundle("~/bundles/moment").Include(
+                  "~/Scripts/moment.js"))
+
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
                   "~/Content/bootstrap.css",
                   "~/Content/site.css"))
+
+        bundles.Add(New StyleBundle("~/Content/calendar").Include(
+                  "~/Content/Calendar/fullcalendar.css"))
     End Sub
 End Module
 

@@ -21,7 +21,7 @@
     <OptionInfer>On</OptionInfer>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -194,6 +194,9 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activos.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
@@ -211,9 +214,24 @@
     <Compile Include="AspNetUsers.vb">
       <DependentUpon>ModeloSiesco.tt</DependentUpon>
     </Compile>
+    <Compile Include="Clientes.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="C__MigrationHistory.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory1.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DisponibilidadActivos.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DisponibilidadEmpleados.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.vb">
       <DependentUpon>ModeloSiesco.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">
@@ -270,6 +288,9 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Calendar\fullcalendar.css" />
+    <Content Include="Content\Calendar\fullcalendar.min.css" />
+    <Content Include="Content\Calendar\fullcalendar.print.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -296,14 +317,20 @@
       <DependentUpon>ModeloSiesco.edmx</DependentUpon>
       <LastGenOutput>ModeloSiesco.Context.vb</LastGenOutput>
     </Content>
+    <Content Include="ModeloSiesco.edmx.sql" />
     <Content Include="ModeloSiesco.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloSiesco.edmx</DependentUpon>
       <LastGenOutput>ModeloSiesco.vb</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Calendar\fullcalendar.js" />
+    <Content Include="Scripts\Calendar\fullcalendar.min.js" />
+    <Content Include="Scripts\Calendar\gcal.js" />
+    <Content Include="Scripts\Calendar\lang-all.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.vbhtml" />
     <Content Include="Views\Account\ConfirmEmail.vbhtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.vbhtml" />
@@ -338,7 +365,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
