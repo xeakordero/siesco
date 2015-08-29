@@ -1,6 +1,7 @@
 ﻿@ModelType LoginViewModel
 @Code
     ViewBag.Title = "Iniciar sesión"
+    Layout = Nothing
 End Code
 
 <h2>@ViewBag.Title.</h2>
@@ -43,10 +44,10 @@ End Code
                 <p>
                     @Html.ActionLink("Registrar como nuevo usuario", "Register")
                 </p>
-                @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+               
                     <p>
                         @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                    </p>*@
+                    </p>
                 </text>
             End Using
         </section>
