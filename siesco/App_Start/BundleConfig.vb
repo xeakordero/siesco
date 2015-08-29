@@ -22,6 +22,8 @@ Public Module BundleConfig
                   "~/Scripts/Calendar/fullcalendar.min.js"))
         bundles.Add(New ScriptBundle("~/bundles/moment").Include(
                   "~/Scripts/moment.js"))
+        bundles.Add(New ScriptBundle("~/bundles/datatables").Include(
+                  "~/Scripts/DataTables/jquery.dataTables.js"))
 
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
@@ -30,6 +32,8 @@ Public Module BundleConfig
 
         bundles.Add(New StyleBundle("~/Content/calendar").Include(
                   "~/Content/Calendar/fullcalendar.css"))
+        bundles.Add(New StyleBundle("~/Content/datatables").Include(
+                  "~/Content/DataTables/css/jquery.dataTables.css"))
     End Sub
 End Module
 

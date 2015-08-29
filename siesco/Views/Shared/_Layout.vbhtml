@@ -15,6 +15,8 @@
 
 
         $(document).ready(function () {
+            $('#myTable').DataTable();
+
 
             $('#calendar').fullCalendar({
                 header: {
@@ -98,7 +100,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-
+        <div id="myTable"></div>
         <div id="calendar"></div>
         <hr />
         <footer>
@@ -110,7 +112,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/calendar")
     @Styles.Render("~/Content/calendar")
-
+    
 
     @RenderSection("scripts", required:=False)
 </body>

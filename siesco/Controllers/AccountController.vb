@@ -140,9 +140,9 @@ Public Class AccountController
 
                 ' Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
                 ' Enviar correo electrónico con este vínculo
-                ' Dim code = Await UserManager.GenerateEmailConfirmationTokenAsync(user.Id)
-                ' Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With { .userId = user.Id, .code = code }, protocol := Request.Url.Scheme)
-                ' Await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=""" & callbackUrl & """>aquí</a>")
+                Dim code = Await UserManager.GenerateEmailConfirmationTokenAsync(user.Id)
+                Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With {.userId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
+                Await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=""" & callbackUrl & """>aquí</a>")
 
                 Return RedirectToAction("Index", "Home")
             End If
@@ -185,10 +185,10 @@ Public Class AccountController
             End If
             ' Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
             ' Enviar correo electrónico con este vínculo
-            ' Dim code = Await UserManager.GeneratePasswordResetTokenAsync(user.Id)
-            ' Dim callbackUrl = Url.Action("ResetPassword", "Account", New With { .userId = user.Id, .code = code }, protocol := Request.Url.Scheme)
-            ' Await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Restablezca su contraseña haciendo clic <a href=""" & callbackUrl & """>aquí</a>")
-            ' Return RedirectToAction("ForgotPasswordConfirmation", "Account")
+            Dim code = Await UserManager.GeneratePasswordResetTokenAsync(user.Id)
+            Dim callbackUrl = Url.Action("ResetPassword", "Account", New With {.userId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
+            Await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Restablezca su contraseña haciendo clic <a href=""" & callbackUrl & """>aquí</a>")
+            Return RedirectToAction("ForgotPasswordConfirmation", "Account")
         End If
 
         ' Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario

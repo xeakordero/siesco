@@ -2,6 +2,7 @@
     Inherits System.Web.Mvc.Controller
 
     Function Index() As ActionResult
+
         Return View()
     End Function
 
@@ -13,10 +14,7 @@
 
     Function Contact() As ActionResult
         ViewData("Message") = "Your contact page."
-        Using db As New Entities
 
-
-        End Using
         Return View()
     End Function
 End Class

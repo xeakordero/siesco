@@ -11,6 +11,11 @@ Public Class EmailService
 
     Public Function SendAsync(message As IdentityMessage) As Task Implements IIdentityMessageService.SendAsync
         ' Conecte su servicio de correo electrónico aquí para enviar correo electrónico.
+        Dim destinatario As New List(Of String)
+        destinatario.Add(message.Destination)
+
+        Utils.EnviarEmail(destinatario, message.Body, "Recuperación de contraseña")
+
         Return Task.FromResult(0)
     End Function
 End Class
