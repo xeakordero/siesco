@@ -183,6 +183,7 @@ Public Class AccountController
                 ' No revelar que el usuario no existe o que no está confirmado
                 Return View("ForgotPasswordConfirmation")
             End If
+
             ' Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
             ' Enviar correo electrónico con este vínculo
             Dim code = Await UserManager.GeneratePasswordResetTokenAsync(user.Id)

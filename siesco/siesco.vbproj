@@ -199,8 +199,23 @@
     <Compile Include="App_Start\IdentityConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
+    <Compile Include="AspNetUserClaims.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogins.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUsers.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
+    <Compile Include="C__MigrationHistory.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.vb">
+      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +265,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-siesco-20150827125009.mdf" />
+    <Content Include="App_Data\aspnet-siesco-20150827125009_log.ldf">
+      <DependentUpon>aspnet-siesco-20150827125009.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Calendar\fullcalendar.css" />
@@ -435,9 +454,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -15,7 +15,7 @@
 
 
         $(document).ready(function () {
-            $('#myTable').DataTable();
+          
 
 
             $('#calendar').fullCalendar({
@@ -100,8 +100,8 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <div id="myTable"></div>
-        <div id="calendar"></div>
+       
+       
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
