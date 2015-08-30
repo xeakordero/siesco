@@ -26,5 +26,6 @@ Partial Public Class AspNetUsers
 
     Public Overridable Property AspNetUserClaims As ICollection(Of AspNetUserClaims) = New HashSet(Of AspNetUserClaims)
     Public Overridable Property AspNetUserLogins As ICollection(Of AspNetUserLogins) = New HashSet(Of AspNetUserLogins)
+    Public Overridable Property AspNetRoles As ICollection(Of AspNetRoles) = New HashSet(Of AspNetRoles)
 
 End Class

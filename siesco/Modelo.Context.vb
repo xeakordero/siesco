@@ -23,6 +23,7 @@ Partial Public Class Entities
     End Sub
 
     Public Overridable Property C__MigrationHistory() As DbSet(Of C__MigrationHistory)
+    Public Overridable Property AspNetRoles() As DbSet(Of AspNetRoles)
     Public Overridable Property AspNetUserClaims() As DbSet(Of AspNetUserClaims)
     Public Overridable Property AspNetUserLogins() As DbSet(Of AspNetUserLogins)
     Public Overridable Property AspNetUsers() As DbSet(Of AspNetUsers)

@@ -199,41 +199,44 @@
     <Compile Include="App_Start\IdentityConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
+    <Compile Include="AspNetRoles.vb">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="AspNetUserClaims.vb">
-      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogins.vb">
-      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUsers.vb">
-      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="C__MigrationHistory.vb">
-      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleados.vb">
-      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utils.vb" />
-    <Compile Include="ModeloSiesco.Context.vb">
+    <Compile Include="Modelo.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloSiesco.Context.tt</DependentUpon>
+      <DependentUpon>Modelo.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModeloSiesco.Designer.vb">
+    <Compile Include="Modelo.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
+      <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ModeloSiesco.vb">
+    <Compile Include="Modelo.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloSiesco.tt</DependentUpon>
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.vb" />
     <Compile Include="Models\IdentityModels.vb" />
@@ -333,15 +336,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="ModeloSiesco.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloSiesco.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ModeloSiesco.edmx.diagram">
-      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\DataTables\css\dataTables.responsive.scss" />
     <Content Include="Content\DataTables\css\dataTables.jqueryui.scss" />
+    <EntityDeploy Include="Modelo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelo.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Modelo.edmx.diagram">
+      <DependentUpon>Modelo.edmx</DependentUpon>
+    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -352,16 +355,15 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="ModeloSiesco.Context.tt">
+    <Content Include="Modelo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
-      <LastGenOutput>ModeloSiesco.Context.vb</LastGenOutput>
+      <DependentUpon>Modelo.edmx</DependentUpon>
+      <LastGenOutput>Modelo.Context.vb</LastGenOutput>
     </Content>
-    <Content Include="ModeloSiesco.edmx.sql" />
-    <Content Include="ModeloSiesco.tt">
+    <Content Include="Modelo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloSiesco.edmx</DependentUpon>
-      <LastGenOutput>ModeloSiesco.vb</LastGenOutput>
+      <DependentUpon>Modelo.edmx</DependentUpon>
+      <LastGenOutput>Modelo.vb</LastGenOutput>
     </Content>
     <Content Include="Scripts\Calendar\fullcalendar.js" />
     <Content Include="Scripts\Calendar\fullcalendar.min.js" />
