@@ -27,6 +27,8 @@ Partial Public Class Entities
     Public Overridable Property AspNetUserClaims() As DbSet(Of AspNetUserClaims)
     Public Overridable Property AspNetUserLogins() As DbSet(Of AspNetUserLogins)
     Public Overridable Property AspNetUsers() As DbSet(Of AspNetUsers)
+    Public Overridable Property DisponibilidadActivo() As DbSet(Of DisponibilidadActivo)
+    Public Overridable Property DisponibilidadEmpleado() As DbSet(Of DisponibilidadEmpleado)
     Public Overridable Property Empleados() As DbSet(Of Empleados)
 
 End Class

@@ -66,6 +66,24 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
+        <EntityType Name="DisponibilidadActivo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="fechaTermino" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisponibilidadEmpleado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaInicio" Type="datetime" />
+          <Property Name="fechaTermino" Type="datetime" />
+          <Property Name="Empleado" Type="int" />
+        </EntityType>
         <EntityType Name="Empleados">
           <Key>
             <PropertyRef Name="Id" />
@@ -74,6 +92,7 @@
           <Property Name="Nombres" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Apellidos" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Rut" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AspNetUsers" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -131,6 +150,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DisponibilidadEmpleados_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="DisponibilidadEmpleado" Type="Self.DisponibilidadEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisponibilidadEmpleado">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_empleados_aspnetuser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="AspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -138,6 +181,8 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisponibilidadActivo" EntityType="Self.DisponibilidadActivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisponibilidadEmpleado" EntityType="Self.DisponibilidadEmpleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -154,6 +199,14 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisponibilidadEmpleados_Empleados" Association="Self.FK_DisponibilidadEmpleados_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="DisponibilidadEmpleado" EntitySet="DisponibilidadEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_empleados_aspnetuser" Association="Self.FK_empleados_aspnetuser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -218,7 +271,27 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_empleados_aspnetuser" FromRole="AspNetUsers" ToRole="Empleados" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="DisponibilidadActivo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaTermino" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisponibilidadEmpleado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="fechaTermino" Type="DateTime" Precision="3" />
+          <Property Name="Empleado" Type="Int32" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_DisponibilidadEmpleados_Empleados" FromRole="DisponibilidadEmpleado" ToRole="Empleados" />
         </EntityType>
         <EntityType Name="Empleados">
           <Key>
@@ -228,6 +301,9 @@
           <Property Name="Nombres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Apellidos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AspNetUsers" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="Self.FK_empleados_aspnetuser" FromRole="Empleados" ToRole="AspNetUsers" />
+          <NavigationProperty Name="DisponibilidadEmpleado" Relationship="Self.FK_DisponibilidadEmpleados_Empleados" FromRole="Empleados" ToRole="DisponibilidadEmpleado" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -257,6 +333,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_empleados_aspnetuser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="AspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisponibilidadEmpleados_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="DisponibilidadEmpleado" Type="Self.DisponibilidadEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DisponibilidadEmpleado">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="AspNetUserRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
@@ -267,6 +367,8 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="DisponibilidadActivo" EntityType="Self.DisponibilidadActivo" />
+          <EntitySet Name="DisponibilidadEmpleado" EntityType="Self.DisponibilidadEmpleado" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -275,6 +377,14 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_empleados_aspnetuser" Association="Self.FK_empleados_aspnetuser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisponibilidadEmpleados_Empleados" Association="Self.FK_DisponibilidadEmpleados_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="DisponibilidadEmpleado" EntitySet="DisponibilidadEmpleado" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -342,6 +452,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DisponibilidadActivo">
+            <EntityTypeMapping TypeName="Model.DisponibilidadActivo">
+              <MappingFragment StoreEntitySet="DisponibilidadActivo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaTermino" ColumnName="fechaTermino" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisponibilidadEmpleado">
+            <EntityTypeMapping TypeName="Model.DisponibilidadEmpleado">
+              <MappingFragment StoreEntitySet="DisponibilidadEmpleado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaTermino" ColumnName="fechaTermino" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Empleados">
             <EntityTypeMapping TypeName="Model.Empleados">
               <MappingFragment StoreEntitySet="Empleados">
@@ -349,6 +479,7 @@
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="Rut" ColumnName="Rut" />
+                <ScalarProperty Name="AspNetUsers" ColumnName="AspNetUsers" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

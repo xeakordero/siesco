@@ -10,14 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Empleados
-    Public Property Id As Integer
-    Public Property Nombres As String
-    Public Property Apellidos As String
-    Public Property Rut As String
-    Public Property AspNetUsers As String
+Partial Public Class DisponibilidadEmpleado
+    Public Property id As Integer
+    Public Property fechaInicio As Nullable(Of Date)
+    Public Property fechaTermino As Nullable(Of Date)
+    Public Property Empleado As Nullable(Of Integer)
 
-    Public Overridable Property AspNetUsers1 As AspNetUsers
-    Public Overridable Property DisponibilidadEmpleado As ICollection(Of DisponibilidadEmpleado) = New HashSet(Of DisponibilidadEmpleado)
+    Public Overridable Property Empleados As Empleados
 
 End Class

@@ -6,5 +6,5 @@ End Code
 
 @Html.Action("Login", "Account")
 
-<div id="calendar"></div>
+
 
